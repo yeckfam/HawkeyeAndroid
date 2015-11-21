@@ -4,7 +4,7 @@
     android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" tools:context=".Register">
+    android:paddingTop="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <!-- Register progress -->
     <ImageView
@@ -24,28 +24,16 @@
         android:fillViewport="false">
 
         <LinearLayout android:id="@+id/register_detail_form" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:weightSum="1">
 
-            <EditText android:id="@+id/LastName" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="Last Name"
-                android:singleLine="true" />
 
-            <EditText android:id="@+id/FirstName" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="First Name"
-                android:singleLine="true" />
-
-            <EditText android:id="@+id/Age" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="Age"
-                android:singleLine="true" />
-
-            <EditText android:id="@+id/password" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="Password"
-                android:maxLines="1" android:singleLine="true" />
 
             <Button android:id="@+id/register_button" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="REGISTER"
-                android:textStyle="bold" />
+                android:layout_marginTop="16dp" android:text="TODO: CAMERA VIEW"
+                android:textStyle="bold"
+                android:layout_weight="5" />
 
         </LinearLayout>
     </ScrollView>
