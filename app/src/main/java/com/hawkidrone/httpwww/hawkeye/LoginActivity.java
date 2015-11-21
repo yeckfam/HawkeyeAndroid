@@ -3,6 +3,7 @@ package com.hawkidrone.httpwww.hawkeye;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -43,6 +44,8 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
     };
+
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -94,7 +97,6 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -150,6 +152,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
+
         return email.contains("@");
     }
 
@@ -282,7 +285,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
             }
 
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -292,6 +295,8 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
 
             if (success) {
                 finish();
+                Intent myIntent = new Intent(LoginActivity.this,MainActivity.class);
+                LoginActivity.this.startActivity(myIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
