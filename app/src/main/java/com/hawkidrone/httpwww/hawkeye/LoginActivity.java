@@ -12,6 +12,8 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ import java.util.List;
  */
 public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<Cursor> {
 
+    Button loginButton = (Button) findViewById(R.id.to_login);
+    Button registerButton = (Button) findViewById(R.id.to_register);
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -62,36 +66,64 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         Firebase.setAndroidContext(this);
         Firebase myFirebaseRef = new Firebase("https://radiant-heat-7859.firebaseio.com/");
 
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
+            public void onClick(View v) {
+                Intent in = new Intent(LoginActivity.this, Register.class);
+                startActivity(in);
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                attemptLogin();
+            public void onClick(View v) {
+                new AlertDialog.Builder(LoginActivity.this)
+                        .setMessage("Enter your email address and password")
+                        .setTitle("Log in")
+                        .setView(LoginActivity.this.getLayoutInflater().inflate(R.layout.dialog_login, null))
+                        .setNegativeButton("Cancel", null)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                AlertDialog dlg = (AlertDialog) dialog;
+                                final String email = ((TextView) dlg.findViewById(R.id.email)).getText().toString();
+                                final String password = ((TextView) dlg.findViewById(R.id.password)).getText().toString();
+
+                                // TODO: sign in to Firebase
+                            }
+                        })
+                        .create()
+                        .show();
             }
         });
+                // Set up the login form.
+       // mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+       // populateAutoComplete();
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+      //  mPasswordView = (EditText) findViewById(R.id.password);
+       // mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+         //   @Override
+           // public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+             //   if (id == R.id.login || id == EditorInfo.IME_NULL) {
+               //     attemptLogin();
+                 //   return true;
+                //}
+                //return false;
+            //}
+        //});
+
+        //Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        //mEmailSignInButton.setOnClickListener(new OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
+              //  attemptLogin();
+            //}
+       // });
+
+        //mLoginFormView = findViewById(R.id.login_form);
+        //mProgressView = findViewById(R.id.login_progress);
     }
 
     private void populateAutoComplete() {
