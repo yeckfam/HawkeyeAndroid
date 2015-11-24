@@ -34,11 +34,11 @@
                 android:layout_height="wrap_content" android:hint="First Name"
                 android:singleLine="true" />
 
-            <EditText android:id="@+id/Age" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:hint="Age"
+            <EditText android:id="@+id/input_email" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="Email"
                 android:singleLine="true" />
 
-            <EditText android:id="@+id/password2" android:layout_width="match_parent"
+            <EditText android:id="@+id/input_password" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:hint="Password"
                 android:maxLines="1" android:singleLine="true" />
 
