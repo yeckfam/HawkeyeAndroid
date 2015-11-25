@@ -56,7 +56,7 @@ public class LoginActivity extends ActionBarActivity {
                                 myFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
                                     @Override
                                     public void onAuthenticated(AuthData authData) {
-                                        Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                                        Intent in = new Intent(LoginActivity.this, VideoViewActivity.class);
                                         startActivity(in);
                                     }
 
