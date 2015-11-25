@@ -21,19 +21,14 @@
 
     <ScrollView android:id="@+id/main_form" android:layout_width="match_parent"
         android:layout_height="581dp"
-        android:fillViewport="false">
-
-        <LinearLayout android:id="@+id/main_detail_form" android:layout_width="match_parent"
-            android:layout_height="match_parent" android:orientation="vertical"
-            android:weightSum="1">
+        android:fillViewport="false"
+        android:fadeScrollbars="false">
 
             <WebView android:id="@+id/camera_view" style="?android:textAppearanceSmall"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" android:text="CAMERA VIEW"
-                android:textStyle="bold"
                 android:layout_weight="5" />
 
-        </LinearLayout>
     </ScrollView>
 
     <Button

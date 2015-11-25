@@ -17,6 +17,7 @@ public class MainActivity extends ActionBarActivity {
         wv.setWebViewClient(new MyBrowser());
         wv.getSettings().setLoadsImagesAutomatically(true);
         wv.getSettings().setJavaScriptEnabled(true);
+        wv.getSettings().setUseWideViewPort(true);
         wv.loadUrl("http://192.168.42.87:8080/stream");
     }
 
