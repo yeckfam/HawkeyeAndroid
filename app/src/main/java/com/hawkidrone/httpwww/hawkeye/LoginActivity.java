@@ -18,6 +18,7 @@ public class LoginActivity extends ActionBarActivity {
     Button loginButton;
     Button registerButton;
     private Firebase myFirebaseRef;
+    private AlertDialog.Builder dlgAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +53,6 @@ public class LoginActivity extends ActionBarActivity {
                                 final String email = ((TextView) dlg.findViewById(R.id.email)).getText().toString();
                                 final String password = ((TextView) dlg.findViewById(R.id.password)).getText().toString();
 
-                                // TODO: sign in to Firebase
-                                //myFirebaseRef.createUser(email, password, new Firebase.ResultHandler() {
-                                //  @Override
-                                //public void onSuccess() {
-                                //  myFirebaseRef.authWithPassword(email, password, null);
-                                // }
-                                //@Override
-                                //public void onError(FirebaseError firebaseError) {
-                                //   myFirebaseRef.authWithPassword(email, password, null);
-                                // }
-                                // });
-
                                 myFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
                                     @Override
                                     public void onAuthenticated(AuthData authData) {
@@ -72,7 +61,7 @@ public class LoginActivity extends ActionBarActivity {
                                     }
 
                                     public void onAuthenticationError(FirebaseError firebaseError) {
-                                        //TODO: Invalid password or register
+                                        showErrorDialog();
                                     }
                                 });
                             }
@@ -81,6 +70,16 @@ public class LoginActivity extends ActionBarActivity {
                         .show();
             }
         });
+    }
+
+    private void showErrorDialog() {
+        dlgAlert = new AlertDialog.Builder(LoginActivity.this);
+        dlgAlert.setMessage("Wrong password or username");
+        dlgAlert.setTitle("Error Message...");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create();
+        dlgAlert.show();
     }
 }
 
