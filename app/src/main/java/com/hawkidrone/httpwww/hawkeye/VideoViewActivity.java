@@ -21,7 +21,7 @@ public class VideoViewActivity extends ActionBarActivity {
     VideoView videoview;
 
     // Insert your Video URL
-    String VideoURL = "http://192.168.42.87:8080/stream/video.h264";
+    String VideoURL = "http://192.168.42.87:8080/stream/video.mjpeg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
