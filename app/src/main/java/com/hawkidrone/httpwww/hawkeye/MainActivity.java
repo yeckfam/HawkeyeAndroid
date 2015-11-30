@@ -29,6 +29,13 @@ public class MainActivity extends ActionBarActivity {
                 dialContactPhone("911");
             }
         });
+
+        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirect();
+            }
+        });
     }
 
     private class MyBrowser extends WebViewClient {
@@ -41,6 +48,10 @@ public class MainActivity extends ActionBarActivity {
 
     private void dialContactPhone(final String phoneNumber) {
         startActivity(new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNumber, null)));
+    }
+
+    private void redirect() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.42.87:8080/stream/webrtc")));
     }
 
 }
