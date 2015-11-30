@@ -2,6 +2,7 @@ package com.hawkidrone.httpwww.hawkeye;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,13 @@ public class Register extends ActionBarActivity {
                 });
             }
         });
+
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialContactPhone("911");
+            }
+        });
     }
 
     private void showErrorDialog() {
@@ -55,5 +63,9 @@ public class Register extends ActionBarActivity {
         dlgAlert.setCancelable(true);
         dlgAlert.create();
         dlgAlert.show();
+    }
+
+    private void dialContactPhone(final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNumber, null)));
     }
 }

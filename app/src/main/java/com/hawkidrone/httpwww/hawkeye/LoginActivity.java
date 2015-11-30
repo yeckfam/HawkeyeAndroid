@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.AuthData;
+import android.net.Uri;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -70,6 +71,13 @@ public class LoginActivity extends ActionBarActivity {
                         .show();
             }
         });
+
+        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialContactPhone("911");
+            }
+        });
     }
 
     private void showErrorDialog() {
@@ -80,6 +88,10 @@ public class LoginActivity extends ActionBarActivity {
         dlgAlert.setCancelable(true);
         dlgAlert.create();
         dlgAlert.show();
+    }
+
+    private void dialContactPhone(final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNumber, null)));
     }
 }
 
