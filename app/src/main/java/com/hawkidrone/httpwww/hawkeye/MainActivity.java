@@ -1,7 +1,10 @@
 package com.hawkidrone.httpwww.hawkeye;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,6 +22,13 @@ public class MainActivity extends ActionBarActivity {
         wv.getSettings().setJavaScriptEnabled(true);
         wv.getSettings().setUseWideViewPort(true);
         wv.loadUrl("http://192.168.42.87:8080/stream");
+
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialContactPhone("911");
+            }
+        });
     }
 
     private class MyBrowser extends WebViewClient {
@@ -27,6 +37,10 @@ public class MainActivity extends ActionBarActivity {
             view.loadUrl(url);
             return true;
         }
+    }
+
+    private void dialContactPhone(final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNumber, null)));
     }
 
 }

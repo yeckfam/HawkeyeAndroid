@@ -9,34 +9,22 @@
     <!-- Register progress -->
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="43061dp"
+        android:layout_height="55dp"
         android:background="#cdcecf"
-        android:src="@mipmap/hawkeyelogo"
-        android:layout_weight="6.13" />
+        android:src="@mipmap/hawkeyelogo" />
 
-    <ProgressBar android:id="@+id/main_page" style="?android:attr/progressBarStyleLarge"
+    <WebView android:id="@+id/camera_view" style="?android:textAppearanceSmall"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" android:visibility="gone" />
-
-    <ScrollView android:id="@+id/main_form" android:layout_width="match_parent"
-        android:layout_height="581dp"
-        android:fillViewport="false"
-        android:fadeScrollbars="false">
-
-            <WebView android:id="@+id/camera_view" style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="CAMERA VIEW"
-                android:layout_weight="5" />
-
-    </ScrollView>
+        android:layout_marginTop="16dp" android:text="CAMERA VIEW"
+        android:layout_weight="2.31" />
 
     <Button
         style="?android:textAppearanceSmall"
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="100dp"
         android:text="CALL 911"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal" />
