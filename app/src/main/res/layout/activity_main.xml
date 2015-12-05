@@ -36,11 +36,10 @@
         <Button
             style="?android:textAppearanceSmall"
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="44dp"
             android:layout_marginTop="100dp"
-            android:text="Mic"
-            android:textStyle="bold"
+            android:drawableTop="@drawable/rsz_1microphone"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </LinearLayout>
