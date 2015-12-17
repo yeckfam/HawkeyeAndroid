@@ -7,9 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.view.Menu;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class MainActivity extends ActionBarActivity {
     WebView wv;
+    private TextView switchStatus;
+    private Switch mySwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,37 @@ public class MainActivity extends ActionBarActivity {
                 redirect();
             }
         });
+
+        switchStatus = (TextView) findViewById(R.id.switchStatus);
+        mySwitch = (Switch) findViewById(R.id.mySwitch);
+
+        //set the switch to ON
+        mySwitch.setChecked(true);
+        //attach a listener to check for changes in state
+        mySwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+
+                if(isChecked){
+                    switchStatus.setText("Hawkeye is ARMED!");
+                }else{
+                    switchStatus.setText("Hawkeye is OFF");
+                }
+
+            }
+        });
+
+        //check the current state before we display the screen
+        if (mySwitch.isChecked()) {
+            switchStatus.setText("Hawkeye is ARMED!");
+        }
+        else {
+            switchStatus.setText("Hawkeye is OFF");
+        }
+
+
     }
 
     private class MyBrowser extends WebViewClient {
